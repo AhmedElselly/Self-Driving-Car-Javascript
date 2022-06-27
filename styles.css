@@ -7,4 +7,9 @@
 body {
     overflow: hidden;
     text-align: center;
+    background-color: gray;
+}
+
+#myCanvas {
+    background-color: lightgray;
 }
