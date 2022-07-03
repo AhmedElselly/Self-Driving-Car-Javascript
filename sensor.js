@@ -17,25 +17,20 @@ class Sensor {
                 this.#getReading(this.rays[i], roadBorders)
             );
         }
-
-        console.log(this.readings)
     }
 
     #getReading(ray, roadBorders){
         let touches = [];
         for(let i = 0; i < roadBorders.length; i++){
             const touch = getIntersection(ray[0], ray[1], roadBorders[i][0], roadBorders[i][1]);
-            console.log(touch)
             if(touch){
                 touches.push(touch);
             }
         }
-        console.log(touches)
         if(touches.length === 0){
             return null;
         } else {
             const offsets = touches.map(e => e.offset);
-            console.log(offsets);
             const minOffset = Math.min(...offsets);
             return touches.find(e => e.offset === minOffset);
         }
