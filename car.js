@@ -12,7 +12,8 @@ class Car {
         this.friction = 0.05;
 
         this.angle = 0;
-
+        // console.log(this)
+        this.sensor = new Sensor(this);
         this.controls = new Controls();
     }
 
@@ -55,9 +56,9 @@ class Car {
         this.y -= Math.cos(this.angle) * this.speed;
     }
 
-    update(){
-        
-        this.#move()
+    update(roadBorders){
+        this.#move();
+        this.sensor.update(roadBorders);
     }
 
     draw(ctx){
@@ -69,5 +70,7 @@ class Car {
         ctx.rect(-this.width / 2,  -this.height / 2, this.width, this.height);
         ctx.fill();
         ctx.restore();
+
+        this.sensor.draw(ctx);
     }
 }
